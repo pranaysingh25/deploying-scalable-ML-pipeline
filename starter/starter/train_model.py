@@ -1,4 +1,19 @@
-# Script to train machine learning model.
+"""
+Model Training Script
+
+This module trains a Random Forest classifier on census income data.
+It performs the following steps:
+1. Load and split the cleaned census data
+2. Process categorical features using one-hot encoding
+3. Train a Random Forest model
+4. Generate predictions and compute performance metrics
+5. Analyze model performance on categorical data slices
+6. Save the trained model, encoder, and label binarizer for inference
+
+The script evaluates performance using precision, recall, and F-beta score metrics.
+It also generates a detailed report of model performance on categorical feature slices
+to assess fairness and identify potential biases.
+"""
 
 import pandas as pd
 import pickle

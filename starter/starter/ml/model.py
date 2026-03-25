@@ -1,3 +1,20 @@
+"""
+Model Training and Inference Module
+
+This module provides functions for training machine learning models and generating predictions.
+It implements:
+- Model training using Random Forest Classifier
+- Model inference on new data
+- Performance metric computation (precision, recall, F-beta score)
+- Categorical slice analysis for fairness assessment
+
+Functions:
+    train_model: Train a Random Forest classifier
+    compute_model_metrics: Calculate precision, recall, and F-beta metrics
+    inference: Generate predictions using a trained model
+    performance_on_categorical_slices: Analyze performance across categorical feature values
+"""
+
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 

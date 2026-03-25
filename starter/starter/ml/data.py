@@ -1,3 +1,16 @@
+"""
+Data Processing Module
+
+This module provides utilities for preprocessing data in the machine learning pipeline.
+It handles:
+- One-hot encoding of categorical features
+- Label binarization for binary classification
+- Consistent data transformation for training and inference
+
+Functions:
+    process_data: Process data using one-hot encoding and label binarization
+"""
+
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
