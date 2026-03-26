@@ -1,23 +1,26 @@
 """
 Data Validation Schemas Module
 
-This module defines Pydantic models for request/response validation in the API.
-It ensures type safety and automatic documentation generation for API endpoints.
+This module defines Pydantic models for request/response validation in
+the API. It ensures type safety and automatic documentation generation
+for API endpoints.
 
 Classes:
-    CensusData: Pydantic model for census income prediction request data
+    CensusData: Pydantic model for census income prediction request
 """
 
 from pydantic import BaseModel, Field, ConfigDict
 
+
 class CensusData(BaseModel):
     """
     Pydantic model for census data used in income prediction.
-    
-    Represents an individual's census information used to predict income level.
-    All field names use hyphens in API requests (e.g., 'education-num') but are
-    converted to underscores internally (e.g., 'education_num') using Pydantic aliases.
-    
+
+    Represents an individual's census information used to predict income
+    level. All field names use hyphens in API requests (e.g.,
+    'education-num') but are converted to underscores internally (e.g.,
+    'education_num') using Pydantic aliases.
+
     Attributes
     ----------
     age : int
@@ -31,7 +34,8 @@ class CensusData(BaseModel):
     education_num : int
         Numeric encoding of education level
     marital_status : str
-        Marital status (Married-civ-spouse, Never-married, Divorced, etc.)
+        Marital status (Married-civ-spouse, Never-married, Divorced,
+        etc.)
     occupation : str
         Type of occupation
     relationship : str
@@ -84,4 +88,3 @@ class CensusData(BaseModel):
             }
         }
     )
-

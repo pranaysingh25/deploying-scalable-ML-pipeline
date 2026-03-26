@@ -1,7 +1,8 @@
 """
 Model Training and Inference Module
 
-This module provides functions for training machine learning models and generating predictions.
+This module provides functions for training machine learning models and
+generating predictions.
 It implements:
 - Model training using Random Forest Classifier
 - Model inference on new data
@@ -10,9 +11,10 @@ It implements:
 
 Functions:
     train_model: Train a Random Forest classifier
-    compute_model_metrics: Calculate precision, recall, and F-beta metrics
+    compute_model_metrics: Calculate precision, recall, and F-beta
     inference: Generate predictions using a trained model
-    performance_on_categorical_slices: Analyze performance across categorical feature values
+    performance_on_categorical_slices: Analyze performance across
+    categorical feature values
 """
 
 from sklearn.metrics import fbeta_score, precision_score, recall_score
@@ -48,7 +50,8 @@ def train_model(X_train, y_train):
 
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model using precision, recall, and F1.
+    Validates the trained machine learning model using precision,
+    recall, and F1.
 
     Inputs
     ------
@@ -69,7 +72,7 @@ def compute_model_metrics(y, preds):
 
 
 def inference(model, X):
-    """ Run model inferences and return the predictions.
+    """Run model inferences and return the predictions.
 
     Inputs
     ------
@@ -86,7 +89,8 @@ def inference(model, X):
     return preds
 
 
-def performance_on_categorical_slices(data, y, preds, categorical_features):
+def performance_on_categorical_slices(data, y, preds,
+                                      categorical_features):
     """
     Compute model performance on slices of categorical features.
 
@@ -104,29 +108,29 @@ def performance_on_categorical_slices(data, y, preds, categorical_features):
     Returns
     -------
     slice_metrics : dict
-        Dictionary containing performance metrics for each categorical feature slice
+        Dictionary containing performance metrics for each categorical
+        feature slice
     """
     slice_metrics = {}
-    
+
     for feature in categorical_features:
         feature_values = data[feature].unique()
         slice_metrics[feature] = {}
-        
+
         for value in feature_values:
             # Get indices where feature equals value
             indices = data[feature] == value
-            
+
             if indices.sum() > 0:  # Only compute if there are samples
                 y_slice = y[indices]
                 preds_slice = preds[indices]
-                
-                precision, recall, fbeta = compute_model_metrics(y_slice, preds_slice)
-                
+
+                precision, recall, fbeta = compute_model_metrics(
+                    y_slice, preds_slice)
+
                 slice_metrics[feature][value] = {
                     'precision': precision,
                     'recall': recall,
                     'fbeta': fbeta,
                     'count': indices.sum()
                 }
-    
-    return slice_metrics
