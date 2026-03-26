@@ -8,3 +8,4 @@ dvc==3.67.0
 pytest==9.0.2
 dvc-s3
 flake8==7.3.0
+httpx==0.28.1
