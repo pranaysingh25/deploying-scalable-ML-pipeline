@@ -134,3 +134,4 @@ def performance_on_categorical_slices(data, y, preds,
                     'fbeta': fbeta,
                     'count': indices.sum()
                 }
+    return slice_metrics
