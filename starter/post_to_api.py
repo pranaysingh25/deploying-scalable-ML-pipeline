@@ -25,15 +25,20 @@ def post_to_api(api_url, census_data):
         Dictionary containing status_code and prediction result
     """
     response = requests.post(api_url, json=census_data)
+    condition = response.status_code == 200
+    prediction = response.json().get('prediction') if condition else None
     return {
         'status_code': response.status_code,
-        'prediction': response.json().get('prediction') if response.status_code == 200 else None
+        'prediction': prediction
     }
 
 
 if __name__ == "__main__":
     # Live API endpoint
-    API_URL = "https://deploying-scalable-ml-pipeline-mkgn.onrender.com/predict"
+    api_url = (
+        "https://deploying-scalable-ml-pipeline-mkgn.onrender.com/predict"
+    )
+    API_URL = api_url
 
     # Sample census data
     census_data = {
@@ -59,4 +64,3 @@ if __name__ == "__main__":
     # Print results
     print(f"Status Code: {result['status_code']}")
     print(f"Prediction: {result['prediction']}")
-
